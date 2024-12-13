@@ -3,7 +3,6 @@ import dotenv from 'dotenv'
 import connectDB from './db.js'
 import bodyParser from 'body-parser' // Make the server accept JSON
 import Schema from './schema.js'
-import mongoose from 'mongoose'
 
 const app = express()
 const PORT = 3000
@@ -37,11 +36,6 @@ app.post("/create", async (req,res) => {
 
 app.delete("/delete/:id", async (req,res) => {
     const { id } = req.params
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({ success: false, message: "Invalid product Id" })
-    }
-
     try {
         const deletingItem = await Schema.findById(id)
         await Schema.findByIdAndDelete(id)
@@ -53,15 +47,12 @@ app.delete("/delete/:id", async (req,res) => {
 
 app.put("/put/:id", async (req,res) => {
 
+
+    
     const { id } = req.params
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({ success: false, message: "Invalid product Id" })
-    }
-
     const item = req.body
     try {
-        const updatedItem = await Schema.findByIdAndUpdate(id, item, { new:true, upsert: true})
+        const updatedItem = await Test.findByIdAndUpdate(id, item, { new:true, upsert: true})
         // upsert: true ensures the new created field will be saved 
         // (need to update the schema { strict: false } as well)
         res.status(200).json({ success:true, data: updatedItem })

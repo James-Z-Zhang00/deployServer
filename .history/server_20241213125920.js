@@ -3,7 +3,6 @@ import dotenv from 'dotenv'
 import connectDB from './db.js'
 import bodyParser from 'body-parser' // Make the server accept JSON
 import Schema from './schema.js'
-import mongoose from 'mongoose'
 
 const app = express()
 const PORT = 3000
@@ -55,7 +54,7 @@ app.put("/put/:id", async (req,res) => {
 
     const { id } = req.params
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    if (!mongoose.Schema.ObjectId.isValid(id)) {
         return res.status(404).json({ success: false, message: "Invalid product Id" })
     }
 

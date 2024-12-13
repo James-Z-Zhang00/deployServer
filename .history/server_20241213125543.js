@@ -3,7 +3,6 @@ import dotenv from 'dotenv'
 import connectDB from './db.js'
 import bodyParser from 'body-parser' // Make the server accept JSON
 import Schema from './schema.js'
-import mongoose from 'mongoose'
 
 const app = express()
 const PORT = 3000
