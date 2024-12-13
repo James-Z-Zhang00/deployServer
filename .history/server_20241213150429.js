@@ -4,15 +4,13 @@ import connectDB from './db.js'
 import bodyParser from 'body-parser' // Make the server accept JSON
 import Schema from './schema.js'
 import mongoose from 'mongoose'
-import cors from 'cors'
+import cors from ''
 
 const app = express()
 const PORT = 3000
 dotenv.config()
 
-
 app.use(bodyParser.json()) // Middleware to parse JSON
-app.use(cors()) // Allow to send things to browser straightaway
 
 app.get("/test", (req,res) => {
     res.status(200).json({ message:"Hi I'm here" })

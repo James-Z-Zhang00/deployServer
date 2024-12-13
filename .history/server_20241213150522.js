@@ -12,7 +12,6 @@ dotenv.config()
 
 
 app.use(bodyParser.json()) // Middleware to parse JSON
-app.use(cors()) // Allow to send things to browser straightaway
 
 app.get("/test", (req,res) => {
     res.status(200).json({ message:"Hi I'm here" })
