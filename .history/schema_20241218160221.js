@@ -18,7 +18,7 @@ const schema = new mongoose.Schema({
     strict: false // Allow new data field be created if the JSON doesn't have one
 })
 
-const Schema = mongoose.model('Host', schema)
+const Schema = mongoose.model('Hosts', schema)
 // The 2nd Test is the collection name
 
 export default Schema // Export the schema named Test for future use
